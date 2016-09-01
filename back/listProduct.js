@@ -5,7 +5,8 @@ var listProduct = [
     "name": 'Pão',
     "purchaseDate": "20160824",
     "expectedDuration": 7,
-    "img": 'pao.jpg'
+    "img": 'pao.jpg',
+    recipeId: 3,
   },
   {
     "id": 2,
@@ -13,7 +14,8 @@ var listProduct = [
     "name": 'Cebola',
     "purchaseDate": "20160824",
     "expectedDuration": 7,
-    "img": 'cebola.jpg'
+    "img": 'cebola.jpg',
+    recipeId: 1,
   },
   {
     "id": 3,
@@ -21,7 +23,8 @@ var listProduct = [
     "name": 'Pimentão',
     "purchaseDate": "20160824",
     "expectedDuration": 7,
-    "img": 'pimentao.jpg'
+    "img": 'pimentao.jpg',
+    recipeId: 1,
   },
   {
     "id": 4,
@@ -29,7 +32,8 @@ var listProduct = [
     "name": 'Laranja',
     "purchaseDate": "20160824",
     "expectedDuration": 7,
-    "img": 'laranja.jpg'
+    "img": 'laranja.jpg',
+    recipeId: 2,
   },
   {
     "id": 5,
@@ -37,7 +41,8 @@ var listProduct = [
     "name": 'Frango',
     "purchaseDate": "20160824",
     "expectedDuration": 7,
-    "img": 'frango.jpg'
+    "img": 'frango.jpg',
+    recipeId: 1,
   },
   {
     "id": 6,
@@ -45,7 +50,9 @@ var listProduct = [
     "name": 'Banana',
     "purchaseDate": "20160824",
     "expectedDuration": 14,
-    "img": 'banana.jpg'
+    "img": 'banana.jpg',
+    recipeId: 2,
+
   },
   {
     "id": 7,
@@ -53,7 +60,9 @@ var listProduct = [
     "name": 'Salame',
     "purchaseDate": "20160831",
     "expectedDuration": 4,
-    "img": 'salame.jpg'
+    "img": 'salame.jpg',
+    recipeId: 3,
+
   },
   {
     "id": 8,
@@ -61,7 +70,9 @@ var listProduct = [
     "name": 'Queijo',
     "purchaseDate": "20160831",
     "expectedDuration": 5,
-    "img": 'queijo.jpg'
+    "img": 'queijo.jpg',
+    recipeId: 3,
+
   },
   {
     "id": 9,
@@ -69,7 +80,8 @@ var listProduct = [
     "name": 'Maçã',
     "purchaseDate": "20160831",
     "expectedDuration": 20,
-    "img": 'maca.jpg'
+    "img": 'maca.jpg',
+    recipeId: 2,
   },
   {
     "id": 10,
@@ -77,7 +89,8 @@ var listProduct = [
     "name": 'Azeitona',
     "purchaseDate": "20160831",
     "expectedDuration": 20,
-    "img": 'azeitona.jpg'
+    "img": 'azeitona.jpg',
+    recipeId: 3,
   }
 ]
 
