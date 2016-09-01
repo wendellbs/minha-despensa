@@ -1,6 +1,15 @@
 var express = require('express');
 var app = express();
-var listProduct = require('./listProduct')
+var listProductOriginal = require('./listProduct')
+
+var listProduct
+
+var resetListProduct = function() {
+  listProduct = listProductOriginal.map(function(p) {
+    return p
+  })
+}
+
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -15,13 +24,18 @@ app.get('/product', function(req, res) {
 app.get('/remove/:id', function(req, res) {
   var id = parseInt(req.params.id)
   listProduct = listProduct.filter(function(p) {
-    console.log(p, id)
     return p.id !== id
   })
+
+  if (listProduct.length === 0) {
+    resetListProduct()
+  }
   res.send('')
 });
 
 var port = 5000
+
+resetListProduct()
 
 app.listen(port, function () {
   console.log('Example app listening on port ' + port);
