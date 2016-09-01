@@ -2,64 +2,68 @@
 <html ng-app="app">
   <head>
     <meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/custom.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="./assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="./index.css">
   </head>
-  <body>
+  <body ng-controller="ListCtrl as ctrl">
 
-    <div class="container text-center" ng-controller="ListCtrl as listCtrl">
+    <section class="listings" ng-if="ctrl.getListExpiringProduct().length > 0">
+      <div class="wrapper">
+        <h2>Esqueceu de mim?</h2>
+        <ul class="properties_list">
+          <li ng-repeat="product in ctrl.getListExpiringProduct()">
+            <a href="#">
+              <img ng-src="{{'./assets/images/product/' + product.img}}" alt="" title="" class="property_img"/>
+            </a>
 
-      <!-- header -->
-      <div class="col-md-12 col-sm-12">
-        <!-- TODO colocar imagem do Zaffari -->
-        <!-- <div class="bigcart"></div> -->
-        <h1>Minha Dispensa Zaffari</h1>
-      </div>
-
-      <!-- expiring products -->
-      <div class="col-md-12 col-sm-12 text-left table-expiring">
-        <h3>Esqueceu de mim?</h3>
-        <ul>
-          <!-- table head -->
-          <!-- <li class="row list-inline columnCaptions">
-            <span>Quantidade</span>
-            <span>Produto</span>
-            <span>Data de compra</span>
-          </li> -->
-          <!-- table body -->
-          <li class="row" ng-repeat="product in listCtrl.getListExpiringProduct()">
-            <span class="quantity" ng-bind="product.quantity"></span>
-            <span class="itemName" ng-bind="product.name"></span>
-            <span class="popbtn"><a class="arrow"></a></span>
-            <span class="price" ng-bind="product.purchaseDate.format('L')"></span>
+            <span class="info action-remove" ng-click="ctrl.remove(product)"><i class="fa fa-times"></i></span>
+            <span class="info action-recipe" ng-click="ctrl.recipe(product)"><i class="fa fa-cutlery"></i></span>
+            <div>
+              <p class="comprado" ng-bind="ctrl.daysSincePurchaseFormatted(product)"></p>
+            </div>
+            <div class="property_details">
+              <h1>
+                <a href="#" ng-bind="product.name"></a>
+              </h1>
+              <h2>Quantidade: <span class="property_size" ng-bind="product.quantity"></span> - Comprado em: <span class="property_size" ng-bind="product.purchaseDate.format('DD/MM')"></span></h2>
+            </div>
           </li>
         </ul>
       </div>
+    </section>
 
-      <!-- fresh products -->
-      <div class="col-md-12 col-sm-12 text-left table-fresh">
-        <h3>Tá fresquinho!</h3>
-        <ul>
-          <!-- table body -->
-          <li class="row" ng-repeat="product in listCtrl.getListFreshProduct()">
-            <span class="quantity" ng-bind="product.quantity"></span>
-            <span class="itemName" ng-bind="product.name"></span>
-            <span class="popbtn"><a class="arrow"></a></span>
-            <span class="price" ng-bind="product.purchaseDate.format('L')"></span>
+    <section class="listings">
+      <div class="wrapper">
+        <h2>Bem fresquinho</h2>
+        <ul class="properties_list">
+          <li ng-repeat="product in ctrl.getListFreshProduct()">
+            <a href="#">
+              <img ng-src="{{'./assets/images/product/' + product.img}}" alt="" title="" class="property_img"/>
+            </a>
+
+            <span class="info action-remove" ng-click="ctrl.remove(product)"><i class="fa fa-times"></i></span>
+            <span class="info action-recipe" ng-click="ctrl.recipe(product)"><i class="fa fa-cutlery"></i></span>
+            <div>
+              <p class="comprado" ng-bind="ctrl.daysSincePurchaseFormatted(product)"></p>
+            </div>
+            <div class="property_details">
+              <h1>
+                <a href="#" ng-bind="product.name"></a>
+              </h1>
+              <h2>Quantidade: <span class="property_size" ng-bind="product.quantity"></span> - Comprado em: <span class="property_size" ng-bind="product.purchaseDate.format('DD/MM')"></span></h2>
+            </div>
           </li>
         </ul>
       </div>
-
-    </div>
+    </section>
 
     <script src="./node_modules/moment/min/moment-with-locales.min.js" charset="utf-8"></script>
     <script src="./node_modules/jquery/dist/jquery.min.js" charset="utf-8"></script>
-    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="./node_modules/angular/angular.min.js" charset="utf-8"></script>
-    <script src="./assets/js/customjs.js"></script>
     <script src="./index.js"></script>
   </body>
 </html>
