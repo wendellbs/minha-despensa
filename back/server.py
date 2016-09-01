@@ -2,18 +2,20 @@
 
 from flask import Flask
 from flask import request, jsonify
+from flask_cors import CORS, cross_origin
 import json
 #from bs4 import BeautifulSoup
 from lxml import html
 import requests
 app = Flask(__name__)
+CORS(app)
 
 listProduct = [
   {
     "id": 1,
     "quantity": 5,
     "name": 'Pão',
-    "purchaseDate": "24/08/2016",
+    "purchaseDate": "20160824",
     "expectedDuration": 7,
     "img": 'pao.jpg'
   },
@@ -21,7 +23,7 @@ listProduct = [
     "id": 2,
     "quantity": 5,
     "name": 'Cebola',
-    "purchaseDate": "24-08-2016",
+    "purchaseDate": "20160824",
     "expectedDuration": 7,
     "img": 'cebola.jpg'
   },
@@ -29,7 +31,7 @@ listProduct = [
     "id": 3,
     "quantity": 5,
     "name": 'Pimentão',
-    "purchaseDate": "24-08-2016",
+    "purchaseDate": "20160824",
     "expectedDuration": 7,
     "img": 'pimentao.jpg'
   },
@@ -37,7 +39,7 @@ listProduct = [
     "id": 4,
     "quantity": 5,
     "name": 'Laranja',
-    "purchaseDate": "24-08-2016",
+    "purchaseDate": "20160824",
     "expectedDuration": 7,
     "img": 'laranja.jpg'
   },
@@ -45,7 +47,7 @@ listProduct = [
     "id": 5,
     "quantity": 5,
     "name": 'Frango',
-    "purchaseDate": "24-08-2016",
+    "purchaseDate": "20160824",
     "expectedDuration": 7,
     "img": 'frango.jpg'
   },
@@ -53,7 +55,7 @@ listProduct = [
     "id": 6,
     "quantity": 8,
     "name": 'Banana',
-    "purchaseDate": "24-08-2016",
+    "purchaseDate": "20160824",
     "expectedDuration": 14,
     "img": 'banana.jpg'
   },
@@ -61,7 +63,7 @@ listProduct = [
     "id": 7,
     "quantity": 6,
     "name": 'Salame',
-    "purchaseDate": "31/08/2016",
+    "purchaseDate": "20160831",
     "expectedDuration": 4,
     "img": 'salame.jpg'
   },
@@ -69,7 +71,7 @@ listProduct = [
     "id": 8,
     "quantity": 10,
     "name": 'Queijo',
-    "purchaseDate": "31-08-2016",
+    "purchaseDate": "20160831",
     "expectedDuration": 5,
     "img": 'queijo.jpg'
   },
@@ -77,7 +79,7 @@ listProduct = [
     "id": 9,
     "quantity": 10,
     "name": 'Maçã',
-    "purchaseDate": "31-08-2016",
+    "purchaseDate": "20160831",
     "expectedDuration": 20,
     "img": 'maca.jpg'
   },
@@ -85,9 +87,9 @@ listProduct = [
     "id": 10,
     "quantity": 10,
     "name": 'Azeitona',
-    "purchaseDate": "31-08-2016",
+    "purchaseDate": "20160831",
     "expectedDuration": 20,
-    "img": 'azeiton.jpg'
+    "img": 'azeitona.jpg'
   }
 ]
 
