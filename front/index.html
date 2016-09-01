@@ -1,13 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>App</title>
-  <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="./index.css">
-</head>
-<body>
-  <script src="./node_modules/angular/angular.min.js" charset="utf-8"></script>
-  <script src="./index.js" charset="utf-8"></script>
-</body>
+<!doctype html>
+<html ng-app="app">
+  <head>
+    <script src="./node_modules/moment/min/moment.min.js" charset="utf-8"></script>
+    <script src="./node_modules/angular/angular.min.js" charset="utf-8"></script>
+    <script src="./index.js"></script>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./index.css">
+  </head>
+  <body>
+    <h2>Minha Dispensa</h2>
+
+    <div ng-controller="ListCtrl as listCtrl">
+
+      <ul class="unstyled">
+        <li ng-repeat="product in listCtrl.listProduct">
+          <span ng-bind="product.name"></span>
+          <span ng-bind="product.purchaseDate | date:'dd/MM/yyyy'"></span>
+        </li>
+      </ul>
+
+    </div>
+  </body>
 </html>
