@@ -1,24 +1,50 @@
 <!doctype html>
 <html ng-app="app">
   <head>
-    <script src="./node_modules/moment/min/moment.min.js" charset="utf-8"></script>
-    <script src="./node_modules/angular/angular.min.js" charset="utf-8"></script>
-    <script src="./index.js"></script>
+    <meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/custom.css"/>
     <link rel="stylesheet" href="./index.css">
   </head>
   <body>
-    <h2>Minha Dispensa</h2>
 
-    <div ng-controller="ListCtrl as listCtrl">
+    <div class="container text-center" ng-controller="ListCtrl as listCtrl">
 
-      <ul class="unstyled">
-        <li ng-repeat="product in listCtrl.listProduct">
-          <span ng-bind="product.name"></span>
-          <span ng-bind="product.purchaseDate | date:'dd/MM/yyyy'"></span>
-        </li>
-      </ul>
+      <!-- header -->
+      <div class="col-md-12 col-sm-12">
+        <!-- <div class="bigcart"></div> -->
+        <h1>Minha Dispensa</h1>
+      </div>
+
+      <!-- list -->
+      <div class="col-md-12 col-sm-12 text-left">
+        <ul>
+          <!-- table head -->
+          <li class="row list-inline columnCaptions">
+            <span>Quantidade</span>
+            <span>Produto</span>
+            <span>Data de compra</span>
+          </li>
+          <!-- table body -->
+          <li class="row" ng-repeat="product in listCtrl.listProduct">
+            <span class="quantity">1</span>
+            <span class="itemName" ng-bind="product.name"></span>
+            <span class="popbtn"><a class="arrow"></a></span>
+            <span class="price" ng-bind="product.purchaseDate | date:'dd/MM/yyyy'"></span>
+          </li>
+        </ul>
+      </div>
 
     </div>
+
+    <!-- <script src="./node_modules/moment/min/moment.min.js" charset="utf-8"></script> -->
+    <!-- TODO instalar jquery -->
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="./node_modules/angular/angular.min.js" charset="utf-8"></script>
+    <script src="./assets/js/customjs.js"></script>
+    <script src="./index.js"></script>
   </body>
 </html>
