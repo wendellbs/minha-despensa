@@ -95,15 +95,14 @@ listProduct = [
 
 @app.route("/")
 def hello():
-
     return "Hello World!"
+
 @app.route("/product")
 def all():
     return jsonify(listProduct)
 
 @app.route("/remove/<product_id>")
 def delete(product_id):
-
     for i in reversed(range(len(listProduct))):
         if listProduct[i].get('id') == int(product_id):
             listProduct.pop(i)
