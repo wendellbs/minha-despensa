@@ -47,3 +47,15 @@ header {
   font-family: Helvetica, Arial, sans-serif;
   line-height: 25px;
 }
+
+@media (max-width: 650px) {
+  .recipe-box {
+    width: 400px;
+  }
+}
+
+@media (max-width: 450px) {
+  .recipe-box {
+    width: 300px;
+  }
+}
