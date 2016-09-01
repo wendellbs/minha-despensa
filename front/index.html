@@ -11,6 +11,16 @@
   </head>
   <body ng-controller="ListCtrl as ctrl">
 
+    <section class="hero"
+      ng-style="{'background-image': 'url(' + ctrl.getRecipeUrl() + ')'}"
+    >
+  		<header>
+  			<div class="wrapper">
+  				<a href="#"><img src="./assets/images/logobranco.png" class="logo" alt="" titl=""/></a>
+  			</div>
+  		</header><!--  end header section  -->
+  	</section><!--  end hero section  -->
+
     <section class="listings" ng-if="ctrl.getListExpiringProduct().length > 0">
       <div class="wrapper">
         <h2>Esqueceu de mim?</h2>

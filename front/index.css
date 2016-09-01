@@ -5,3 +5,24 @@
 .fa {
   cursor: pointer;
 }
+
+.hero{
+  width: 100%;
+  height: 800px;
+  position: relative;
+  /*background: url('./assets/images/recipe/frangoxadrez.jpg') no-repeat bottom center;*/
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+}
+
+header .logo {
+  margin-top: 20px;
+  /* float: left; */
+  width: 400px;
+}
+
+header {
+  text-align: center;
+}
