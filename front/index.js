@@ -19,7 +19,105 @@ var listRecipe = [
   },
 ]
 
-var listProduct = []
+var listProduct = [
+  {
+    "id": 1,
+    "quantity": 5,
+    "name": 'Pão',
+    "purchaseDate": "20160830",
+    "expectedDuration": 2,
+    "img": 'pao.jpg',
+    recipeId: 3,
+  },
+  {
+    "id": 2,
+    "quantity": 5,
+    "name": 'Cebola',
+    "purchaseDate": "20160824",
+    "expectedDuration": 7,
+    "img": 'cebola.jpg',
+    recipeId: 1,
+  },
+  {
+    "id": 3,
+    "quantity": 5,
+    "name": 'Pimentão',
+    "purchaseDate": "20160824",
+    "expectedDuration": 7,
+    "img": 'pimentao.jpg',
+    recipeId: 1,
+  },
+  {
+    "id": 4,
+    "quantity": 5,
+    "name": 'Laranja',
+    "purchaseDate": "20160824",
+    "expectedDuration": 7,
+    "img": 'laranja.jpg',
+    recipeId: 2,
+  },
+  {
+    "id": 5,
+    "quantity": 5,
+    "name": 'Frango',
+    "purchaseDate": "20160824",
+    "expectedDuration": 7,
+    "img": 'frango.jpg',
+    recipeId: 1,
+  },
+  {
+    "id": 6,
+    "quantity": 8,
+    "name": 'Banana',
+    "purchaseDate": "20160824",
+    "expectedDuration": 14,
+    "img": 'banana.jpg',
+    recipeId: 2,
+
+  },
+  {
+    "id": 7,
+    "quantity": 6,
+    "name": 'Salame',
+    "purchaseDate": "20160831",
+    "expectedDuration": 4,
+    "img": 'salame.jpg',
+    recipeId: 3,
+
+  },
+  {
+    "id": 8,
+    "quantity": 10,
+    "name": 'Queijo',
+    "purchaseDate": "20160831",
+    "expectedDuration": 5,
+    "img": 'queijo.jpg',
+    recipeId: 3,
+
+  },
+  {
+    "id": 9,
+    "quantity": 10,
+    "name": 'Maçã',
+    "purchaseDate": "20160831",
+    "expectedDuration": 20,
+    "img": 'maca.jpg',
+    recipeId: 2,
+  },
+  {
+    "id": 10,
+    "quantity": 10,
+    "name": 'Azeitona',
+    "purchaseDate": "20160831",
+    "expectedDuration": 20,
+    "img": 'azeitona.jpg',
+    recipeId: 3,
+  }
+]
+
+listProduct.forEach(function(p) {
+  p.purchaseDate = moment(p.purchaseDate)
+})
 
 today = moment().locale('pt')
 
@@ -27,10 +125,10 @@ angular.module('app', [])
   .controller('ListCtrl', function(productService) {
     var ctrl = this
 
-    productService.all()
-      .then(d => {
-        listProduct = d
-      })
+    // productService.all()
+    //   .then(d => {
+    //     listProduct = d
+    //   })
 
     ctrl.currentRecipe = listRecipe[0]
 
@@ -68,11 +166,13 @@ angular.module('app', [])
     }
 
     ctrl.remove = function(product) {
-      productService.remove(product.id)
-        .then(function() {
-          var index = listProduct.indexOf(product)
-          listProduct.splice(index, 1)
-        })
+      var index = listProduct.indexOf(product)
+      listProduct.splice(index, 1)
+      // productService.remove(product.id)
+      //   .then(function() {
+      //     var index = listProduct.indexOf(product)
+      //     listProduct.splice(index, 1)
+      //   })
     }
 
     ctrl.recipe = function(product) {
@@ -83,7 +183,6 @@ angular.module('app', [])
     }
   })
   .service('productService', function($http) {
-
     return {
       all: function() {
         return $http.get('http://127.0.0.1:5000/product')
