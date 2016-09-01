@@ -1,3 +1,7 @@
 .listings {
   padding: 20px 0;
 }
+
+.fa {
+  cursor: pointer;
+}
