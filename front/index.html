@@ -14,35 +14,50 @@
 
       <!-- header -->
       <div class="col-md-12 col-sm-12">
+        <!-- TODO colocar imagem do Zaffari -->
         <!-- <div class="bigcart"></div> -->
-        <h1>Minha Dispensa</h1>
+        <h1>Minha Dispensa Zaffari</h1>
       </div>
 
-      <!-- list -->
-      <div class="col-md-12 col-sm-12 text-left">
+      <!-- expiring products -->
+      <div class="col-md-12 col-sm-12 text-left table-expiring">
+        <h3>Esqueceu de mim?</h3>
         <ul>
           <!-- table head -->
-          <li class="row list-inline columnCaptions">
+          <!-- <li class="row list-inline columnCaptions">
             <span>Quantidade</span>
             <span>Produto</span>
             <span>Data de compra</span>
-          </li>
+          </li> -->
           <!-- table body -->
-          <li class="row" ng-repeat="product in listCtrl.listProduct">
-            <span class="quantity">1</span>
+          <li class="row" ng-repeat="product in listCtrl.getListExpiringProduct()">
+            <span class="quantity" ng-bind="product.quantity"></span>
             <span class="itemName" ng-bind="product.name"></span>
             <span class="popbtn"><a class="arrow"></a></span>
-            <span class="price" ng-bind="product.purchaseDate | date:'dd/MM/yyyy'"></span>
+            <span class="price" ng-bind="product.purchaseDate.format('L')"></span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- fresh products -->
+      <div class="col-md-12 col-sm-12 text-left table-fresh">
+        <h3>Tá fresquinho!</h3>
+        <ul>
+          <!-- table body -->
+          <li class="row" ng-repeat="product in listCtrl.getListFreshProduct()">
+            <span class="quantity" ng-bind="product.quantity"></span>
+            <span class="itemName" ng-bind="product.name"></span>
+            <span class="popbtn"><a class="arrow"></a></span>
+            <span class="price" ng-bind="product.purchaseDate.format('L')"></span>
           </li>
         </ul>
       </div>
 
     </div>
 
-    <!-- <script src="./node_modules/moment/min/moment.min.js" charset="utf-8"></script> -->
-    <!-- TODO instalar jquery -->
-    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="./node_modules/moment/min/moment-with-locales.min.js" charset="utf-8"></script>
+    <script src="./node_modules/jquery/dist/jquery.min.js" charset="utf-8"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="./node_modules/angular/angular.min.js" charset="utf-8"></script>
     <script src="./assets/js/customjs.js"></script>
     <script src="./index.js"></script>

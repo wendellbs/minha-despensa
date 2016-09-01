@@ -191,7 +191,8 @@ a:hover {
 	background-color: #e6edf3;
 	margin-left: 25px;
 	height: 63px;
-	width: 40px;
+	width: 80px;
+	text-align: center;
 	padding: 32px 0 0 14px !important;
 	float: right;
 	cursor: pointer;
