@@ -19,104 +19,18 @@ var listRecipe = [
   },
 ]
 
-var listProduct = [
-  {
-    id: 1,
-    quantity: 5,
-    name: 'Pão',
-    purchaseDate: moment().locale('pt').subtract(8, 'days'),
-    expectedDuration: 7,
-    img: 'pao.jpg',
-    recipeId: 3,
-  },
-  {
-    id: 2,
-    quantity: 5,
-    name: 'Cebola',
-    purchaseDate: moment().locale('pt').subtract(8, 'days'),
-    expectedDuration: 7,
-    img: 'cebola.jpg',
-    recipeId: 1,
-  },
-  {
-    id: 3,
-    quantity: 5,
-    name: 'Pimentão',
-    purchaseDate: moment().locale('pt').subtract(8, 'days'),
-    expectedDuration: 7,
-    img: 'pimentao.jpg',
-    recipeId: 1,
-  },
-  {
-    id: 4,
-    quantity: 5,
-    name: 'Laranja',
-    purchaseDate: moment().locale('pt').subtract(8, 'days'),
-    expectedDuration: 7,
-    img: 'laranja.jpg',
-    recipeId: 2,
-  },
-  {
-    id: 5,
-    quantity: 5,
-    name: 'Frango',
-    purchaseDate: moment().locale('pt').subtract(8, 'days'),
-    expectedDuration: 7,
-    img: 'frango.jpg',
-    recipeId: 1,
-  },
-  {
-    id: 6,
-    quantity: 8,
-    name: 'Banana',
-    purchaseDate: moment().locale('pt').subtract(8, 'days'),
-    expectedDuration: 14,
-    img: 'banana.jpg',
-    recipeId: 2,
-  },
-  {
-    id: 7,
-    quantity: 6,
-    name: 'Salame',
-    purchaseDate: moment().locale('pt').subtract(1, 'days'),
-    expectedDuration: 4,
-    img: 'salame.jpg',
-    recipeId: 3,
-  },
-  {
-    id: 8,
-    quantity: 10,
-    name: 'Queijo',
-    purchaseDate: moment().locale('pt').subtract(1, 'days'),
-    expectedDuration: 5,
-    img: 'queijo.jpg',
-    recipeId: 3,
-  },
-  {
-    id: 9,
-    quantity: 10,
-    name: 'Maçã',
-    purchaseDate: moment().locale('pt').subtract(1, 'days'),
-    expectedDuration: 20,
-    img: 'maca.jpg',
-    recipeId: 2,
-  },
-  {
-    id: 10,
-    quantity: 10,
-    name: 'Azeitona',
-    purchaseDate: moment().locale('pt').subtract(1, 'days'),
-    expectedDuration: 20,
-    img: 'azeitona.jpg',
-    recipeId: 3,
-  },
-]
+var listProduct = []
 
 today = moment().locale('pt')
 
 angular.module('app', [])
-  .controller('ListCtrl', function() {
+  .controller('ListCtrl', function(productService) {
     var ctrl = this
+
+    productService.all()
+      .then(d => {
+        listProduct = d
+      })
 
     ctrl.currentRecipe = listRecipe[0]
 
@@ -154,17 +68,37 @@ angular.module('app', [])
     }
 
     ctrl.remove = function(product) {
-      var index = listProduct.indexOf(product)
-      listProduct.splice(index, 1)
+      productService.remove(product.id)
+        .then(function() {
+          var index = listProduct.indexOf(product)
+          listProduct.splice(index, 1)
+        })
     }
 
     ctrl.recipe = function(product) {
       ctrl.currentRecipe = listRecipe.find(function(r) {
         return r.id === product.recipeId
       })
-      // $( "body" ).scrollTop( 1 );
-      $("body").animate({scrollTop:0}, '500');
-      // window.scrollTo(0, 0);
-      // console.log('currentRecipe', ctrl.currentRecipe)
+      $('body').animate({scrollTop:0}, '500');
+    }
+  })
+  .service('productService', function($http) {
+
+    return {
+      all: function() {
+        return $http.get('http://127.0.0.1:5000/product')
+          .then(response => {
+            var data = response.data
+
+            data.forEach(function(p) {
+              p.purchaseDate = moment(p.purchaseDate)
+            })
+
+            return data
+          })
+      },
+      remove: function(id) {
+        return $http.get('http://127.0.0.1:5000/remove/' + id)
+      }
     }
   })
