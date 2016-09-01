@@ -19,10 +19,31 @@
 
 header .logo {
   margin-top: 20px;
-  /* float: left; */
   width: 400px;
 }
 
 header {
   text-align: center;
+}
+
+.recipe-box {
+  position: absolute;
+  bottom: 100px;
+  right: 20px;
+  padding: 20px;
+  width: 600px;
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.recipe-title {
+  font-size: 22px;
+  font-family: Helvetica, Arial, sans-serif;
+  line-height: 40px;
+}
+
+.recipe-text {
+  font-size: 18px;
+  font-family: Helvetica, Arial, sans-serif;
+  line-height: 25px;
 }

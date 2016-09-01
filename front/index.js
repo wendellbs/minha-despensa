@@ -1,15 +1,21 @@
 var listRecipe = [
   {
+    id: 3,
+    img: 'tabuafrios.jpg',
+    title: 'Tábua de Frios',
+    text: 'Corte os queijos em cubos pequenos. Em uma tábua, faça a disposição das fatias de salame e do pão. Pegue porções de diferentes tipos de queijos e azeitonas e disponha-os de forma que a tábua fique dividida em fatias.',
+  },
+  {
     id: 1,
     img: 'frangoxadrez.jpg',
+    title: 'Frango à Xadrez',
+    text: 'Em uma frigideira misture azeite de oliva a cebola e deixe fritar. Retire e coloque em um prato. Na mesma panela, coloque o sal, o restante do azeite e frite os pimentões por 5 minutos. Retire e despeje em outro prato. Ainda na mesma panela, coloque o frango e frite até dourar. Coloque todos os ingredientes novamente na frigideira, misture bem com uma colher de pau e refogue por mais 2 minutos. Em uma xícara, misture o molho shoyu, a maisena e a água. Mexa bem e junte a mistura de frango. Cozinhe, mexendo constantemente, até formar um molho espesso. Coloque em uma travessa, polvilhe com amendoim e sirva quente.',
   },
   {
     id: 2,
     img: 'sucos.jpg',
-  },
-  {
-    id: 3,
-    img: 'tabuafrios.jpg',
+    title: 'Suco de Frutas',
+    text: 'Espremer as laranjas. Passar o suco na peneirinha. Descascar a banana e a maçã. Bater no liquidificador a banana e a maçã com a água, o suco de laranja e o açúcar. Se preferir bem gelado acrescente gelo à vontade.',
   },
 ]
 
