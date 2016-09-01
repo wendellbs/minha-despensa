@@ -1,15 +1,4 @@
-# encoding: utf-8
-
-from flask import Flask
-from flask import request, jsonify
-from flask_cors import CORS, cross_origin
-import json
-from lxml import html
-import requests
-app = Flask(__name__)
-CORS(app)
-
-listProduct = [
+var listProduct = [
   {
     "id": 1,
     "quantity": 5,
@@ -92,16 +81,4 @@ listProduct = [
   }
 ]
 
-@app.route("/product")
-def all():
-    return jsonify(listProduct)
-
-@app.route("/remove/<product_id>")
-def delete(product_id):
-    for i in reversed(range(len(listProduct))):
-        if listProduct[i].get('id') == int(product_id):
-            listProduct.pop(i)
-    return "Done"
-
-if __name__ == "__main__":
-    app.run()
+module.exports = listProduct
