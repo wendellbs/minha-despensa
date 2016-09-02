@@ -21,96 +21,96 @@ var listRecipe = [
 
 var listProduct = [
   {
-    "id": 1,
-    "quantity": 5,
-    "name": 'Pão',
-    "purchaseDate": "20160830",
-    "expectedDuration": 2,
-    "img": 'pao.jpg',
+    id: 1,
+    quantity: 5,
+    name: 'Pão',
+    purchaseDate: moment().locale('pt').subtract(1, 'days'),
+    expectedDuration: 2,
+    img: 'pao.jpg',
     recipeId: 3,
   },
   {
-    "id": 2,
-    "quantity": 5,
-    "name": 'Cebola',
-    "purchaseDate": "20160824",
-    "expectedDuration": 7,
-    "img": 'cebola.jpg',
+    id: 2,
+    quantity: 3,
+    name: 'Cebola',
+    purchaseDate: moment().locale('pt').subtract(8, 'days'),
+    expectedDuration: 7,
+    img: 'cebola.jpg',
     recipeId: 1,
   },
   {
-    "id": 3,
-    "quantity": 5,
-    "name": 'Pimentão',
-    "purchaseDate": "20160824",
-    "expectedDuration": 7,
-    "img": 'pimentao.jpg',
+    id: 3,
+    quantity: 2,
+    name: 'Pimentão',
+    purchaseDate: moment().locale('pt').subtract(8, 'days'),
+    expectedDuration: 7,
+    img: 'pimentao.jpg',
     recipeId: 1,
   },
   {
-    "id": 4,
-    "quantity": 5,
-    "name": 'Laranja',
-    "purchaseDate": "20160824",
-    "expectedDuration": 7,
-    "img": 'laranja.jpg',
+    id: 4,
+    quantity: 5,
+    name: 'Laranja',
+    purchaseDate: moment().locale('pt').subtract(2, 'days'),
+    expectedDuration: 7,
+    img: 'laranja.jpg',
     recipeId: 2,
   },
   {
-    "id": 5,
-    "quantity": 5,
-    "name": 'Frango',
-    "purchaseDate": "20160824",
-    "expectedDuration": 7,
-    "img": 'frango.jpg',
+    id: 5,
+    quantity: 5,
+    name: 'Frango',
+    purchaseDate: moment().locale('pt').subtract(2, 'days'),
+    expectedDuration: 7,
+    img: 'frango.jpg',
     recipeId: 1,
   },
   {
-    "id": 6,
-    "quantity": 8,
-    "name": 'Banana',
-    "purchaseDate": "20160824",
-    "expectedDuration": 14,
-    "img": 'banana.jpg',
+    id: 6,
+    quantity: 8,
+    name: 'Banana',
+    purchaseDate: moment().locale('pt').subtract(5, 'days'),
+    expectedDuration: 14,
+    img: 'banana.jpg',
     recipeId: 2,
 
   },
   {
-    "id": 7,
-    "quantity": 6,
-    "name": 'Salame',
-    "purchaseDate": "20160831",
-    "expectedDuration": 4,
-    "img": 'salame.jpg',
+    id: 7,
+    quantity: 6,
+    name: 'Salame',
+    purchaseDate: moment().locale('pt').subtract(1, 'days'),
+    expectedDuration: 4,
+    img: 'salame.jpg',
     recipeId: 3,
 
   },
   {
-    "id": 8,
-    "quantity": 10,
-    "name": 'Queijo',
-    "purchaseDate": "20160831",
-    "expectedDuration": 5,
-    "img": 'queijo.jpg',
+    id: 8,
+    quantity: 10,
+    name: 'Queijo',
+    purchaseDate: moment().locale('pt').subtract(3, 'days'),
+    expectedDuration: 5,
+    img: 'queijo.jpg',
     recipeId: 3,
 
   },
   {
-    "id": 9,
-    "quantity": 10,
-    "name": 'Maçã',
-    "purchaseDate": "20160831",
-    "expectedDuration": 20,
-    "img": 'maca.jpg',
+    id: 9,
+    quantity: 10,
+    name: 'Maçã',
+    purchaseDate: moment().locale('pt').subtract(6, 'days'),
+    expectedDuration: 20,
+    img: 'maca.jpg',
     recipeId: 2,
   },
   {
-    "id": 10,
-    "quantity": 10,
-    "name": 'Azeitona',
-    "purchaseDate": "20160831",
-    "expectedDuration": 20,
-    "img": 'azeitona.jpg',
+    id: 10,
+    quantity: 10,
+    name: 'Azeitona',
+    purchaseDate: moment().locale('pt').subtract(2, 'days'),
+    expectedDuration: 20,
+    img: 'azeitona.jpg',
     recipeId: 3,
   }
 ]
@@ -186,15 +186,7 @@ angular.module('app', [])
     return {
       all: function() {
         return $http.get('http://127.0.0.1:5000/product')
-          .then(response => {
-            var data = response.data
-
-            data.forEach(function(p) {
-              p.purchaseDate = moment(p.purchaseDate)
-            })
-
-            return data
-          })
+          .then(response => response.data)
       },
       remove: function(id) {
         return $http.get('http://127.0.0.1:5000/remove/' + id)
